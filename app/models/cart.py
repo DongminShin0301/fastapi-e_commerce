@@ -11,9 +11,9 @@ if TYPE_CHECKING:
 
 
 class Cart(Base):
-    __tablename__ = "cart"
+    __tablename__ = "carts"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     user_id: Mapped[int] = mapped_column(ForeignKey(column="users.id", ondelete="CASCADE"), unique=True)
 
     user: Mapped["User"] = relationship()
-    items: Mapped[List["CartItem"]] = relationship(lazy="selectin")
+    items: Mapped[List["CartItem"]] = relationship(lazy="selectin", cascade="all, delete-orphan")

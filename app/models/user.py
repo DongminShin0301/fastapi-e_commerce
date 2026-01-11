@@ -1,13 +1,13 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from sqlalchemy import Enum
-from sqlalchemy.orm import Mapped, mapped_column, deferred
+from sqlalchemy.orm import Mapped, mapped_column, deferred, relationship
 
 from app.constants.role import Role
 from app.db.session import Base
 
 if TYPE_CHECKING:
-    from .cart import Cart
+    from .order import Order
 
 
 class User(Base):
@@ -18,3 +18,5 @@ class User(Base):
     hashed_password: Mapped[str] = mapped_column(nullable=False)
     role: Mapped[Role] = mapped_column(Enum(Role), nullable=False, default=Role.USER)
     is_active: Mapped[bool] = mapped_column(default=True)
+
+    orders: Mapped[List["Order"]] = relationship(back_populates="user")

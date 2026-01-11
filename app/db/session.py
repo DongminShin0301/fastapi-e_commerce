@@ -19,7 +19,7 @@ engine = create_async_engine(url=DATABASE_URL,
                              pool_pre_ping=True,
                              pool_size=20,
                              pool_timeout=3600,
-                             echo=True,
+                             # echo=True,
                              connect_args={"check_same_thread": False})
 
 AsyncSessionLocal = async_sessionmaker(bind=engine,

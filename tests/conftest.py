@@ -13,7 +13,7 @@ BASE_URL = "http://test/api/v1"
 @pytest_asyncio.fixture(scope="function")
 async def async_engine():
     test_engine = create_async_engine(TEST_DB_URL,
-                                      echo=True,
+                                      # echo=True,
                                       connect_args={"check_same_thread": False},
                                       poolclass=StaticPool)
 

@@ -9,7 +9,7 @@ class ProductBase(BaseSchema):
     name: str = Field(min_length=2, max_length=100)
     description: str = Field(max_length=2000)
     price: int = Field(ge=100)
-    quantity: int = Field(ge=1)
+    quantity: int = Field(ge=0)
 
 
 class ProductCreate(ProductBase):
